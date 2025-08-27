@@ -1,0 +1,14 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+<div class="profile-form">
+    <h1>Update Profile</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{profile_form}}
+
+        <input type="submit" value="Update Profile">
+    </form>
+</div>
+{% endblock content %}

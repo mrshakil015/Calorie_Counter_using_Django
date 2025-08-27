@@ -1,4 +1,4 @@
-# Calorie Counter using Django
+# **Calorie Counter using Django**
 
 
 ### **Job Specification for Develop a Calorie Counter Project**

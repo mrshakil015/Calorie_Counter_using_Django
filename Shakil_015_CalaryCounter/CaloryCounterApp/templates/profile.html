@@ -1,0 +1,16 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+<div class="profile-card">
+    <div class="profile-container">
+        <h4><b>Name: {{request.user.profile_user.Name}}</b></h4>
+        <p>Age:  {{request.user.profile_user.Age}}</p>
+        <p>Height:  {{request.user.profile_user.Height}} cm</p>
+        <p>Weight:  {{request.user.profile_user.Weight}} kg</p>
+        <a href="{% url 'profile_update' %}" class="button">Update Profile</a>
+    </div>
+</div>
+
+
+
+{% endblock content %}

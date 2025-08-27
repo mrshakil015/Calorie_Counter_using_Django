@@ -1,0 +1,92 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h5 class="text-center"><b>{{today_consumed_calorie.Total_calorie}} kcal</b></h5>
+                    <p class="text-center">Today Consumed Calorie</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="text-center"><b>{{BMR}} kcal</b></h5>
+                    <p class="text-center">Required Calorie</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card bg-secondary text-white">
+                <div class="card-body">
+                    {% if remaining < 0%}
+                    <h5 class="text-center"><b>{{remaining}} kcal</b></h5>
+                    <p class="text-center">Extra Calorie</p>
+                    {% else %}
+                    <h5 class="text-center"><b>{{remaining}} kcal</b></h5>
+                    <p class="text-center">Remaining</p>
+                    {% endif %}
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+    <h2>Consumed Item List</h2>
+    <a href="{% url 'add_calorie' %}" class="btn btn-primary mb-2">Add Calories Item</a>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Calorie</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in dailyconsumed_calorie_item %}
+            <tr>
+                <td>{{item.Item_name}}</td>
+                <td>{{item.Calorie}} kcal</td>
+                <td>{{item.Date}}</td>
+                <td>
+                    <a href="{% url 'update_calorie' item.id %}" class="btn btn-success">Edit</a>
+                    <a href="{% url 'delete_calorie' item.id %}" class="btn btn-danger">Delete</a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <h2>Day Wise Total Consumed</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Calorie</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in total_consumed_data %}
+            <tr>
+                <td>{{item.Date}}</td>
+                <td>{{item.Total_calorie}} kcal</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

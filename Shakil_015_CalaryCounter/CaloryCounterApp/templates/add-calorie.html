@@ -1,0 +1,14 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+<div class="profile-form">
+    <h1>Add Calorie</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{calorie_form}}
+
+        <input type="submit" value="Add Calorie">
+    </form>
+</div>
+{% endblock content %}
